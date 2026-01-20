@@ -32,7 +32,6 @@ parallel_api = Connection(
     secrets=SecretKeys(token="PARALLEL_API_KEY"),
     base_url="https://api.parallel.ai/v1beta",
     auth_header_format="x-api-key: {api_key}",
-    default_headers={"parallel-beta": PARALLEL_BETA_HEADER},
 )
 
 
@@ -100,7 +99,12 @@ async def _request(
         if query_string:
             path = f"{path}?{query_string}"
 
-    request = HttpRequest(method=method, path=path, body=body)
+    request = HttpRequest(
+        method=method,
+        path=path,
+        body=body,
+        headers={"parallel-beta": PARALLEL_BETA_HEADER},
+    )
     response = await ctx.dispatch("parallel", request)
 
     if response.success:
