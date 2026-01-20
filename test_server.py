@@ -14,7 +14,7 @@ load_dotenv()
 from dedalus_mcp.auth import SecretValues
 from dedalus_labs import AsyncDedalus, DedalusRunner
 
-from parallel import parallel_api
+from parallel import parallel
 
 
 # --- Configuration ------------------------------------------------------------
@@ -23,7 +23,7 @@ DEDALUS_API_KEY = os.getenv("DEDALUS_API_KEY")
 
 # --- Secret Bindings ----------------------------------------------------------
 
-parallel_secrets = SecretValues(parallel_api, token=os.getenv("PARALLEL_API_KEY", "")).to_dict()
+parallel_secrets = SecretValues(parallel, token=os.getenv("PARALLEL_API_KEY", "")).to_dict()
 
 # --- Main ---------------------------------------------------------------------
 

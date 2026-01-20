@@ -15,11 +15,9 @@ from typing import Any
 from dedalus_mcp import HttpMethod, HttpRequest, get_context, tool
 from dedalus_mcp.auth import Connection, SecretKeys
 from dedalus_mcp.types import ToolAnnotations
-from pydantic import Field
 from pydantic.dataclasses import dataclass
 
 # Parallel API uses x-api-key header auth
-# Base URL: https://api.parallel.ai
 parallel = Connection(
     name="parallel",
     secrets=SecretKeys(token="PARALLEL_API_KEY"),
